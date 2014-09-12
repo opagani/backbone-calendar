@@ -1,0 +1,51 @@
+.field input, .field textarea, .field select, .field .logFile.a,
+.field-large input, field-large textarea, field-large select  {
+    display: inline-block;
+    padding: 5px;
+}
+
+.field label {
+    display: inline-block; 
+    width: 200px; 
+    margin-left: 5px;
+    padding: 5px;
+}
+
+.field-large label {
+    display: inline-block; 
+    width: 135px; 
+    margin-left: 5px;
+    padding: 5px;
+}
+
+.ui-dialog .ui-dialog-buttonpane { 
+    text-align: center;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { 
+    float: none;
+}
+
+.dialog input {
+    width: 240px;
+}
+
+.dialog .custom-combobox-input {
+    width: 199px;
+}
+
+.dialog select {
+    width: 252px;
+}
+
+.field-large input {
+    width: 365px;
+}
+
+.field-large textarea {
+    width: 371px;
+}
+
+label[for=command] {
+    vertical-align: top;
+}

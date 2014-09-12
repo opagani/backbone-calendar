@@ -1,0 +1,73 @@
+.daemon-status-prefix {
+    font-weight: bold;
+}
+
+.daemon-status-running {
+    font-weight: bold;
+    color: green;
+}
+
+.daemon-status-dead {
+    font-weight: bold;
+    color: red;
+}
+
+.daemon-status-container {
+    margin-top: 0.5em;
+    margin-right: 1em;
+    display: inline-block;
+}
+
+.logout-container {
+    margin-top: 0.5em;
+    margin-right: 1em;
+    display: inline-block;
+}
+
+.logout {
+    padding: 20px;
+}
+
+.event {
+    color: black;
+}
+
+.event-everyday {
+    border-color: red;
+    background: pink;
+}
+
+.event-holiday {
+    border-color: green;
+    background: #93cf9b;
+}
+
+.event-weekend {
+    border-color: #998c08;
+    background: #f2e999;
+}
+
+.event-weekday {
+    border-color: #621aa7;
+    background: #b29dcc;
+}
+
+.event-single {
+    border-color: #2a3699;
+    background: #cae2f5;
+}
+
+.event-history {
+    border-color: black;
+    background: #bbb;
+}
+
+.history-failed {
+    color: red;
+    text-decoration: line-through;
+}
+
+.history-running {
+    background: #eee;
+}
+

@@ -1,0 +1,14 @@
+.fc-sat.ui-widget-content {
+    /* color weekends grey */
+    background: #E8E8E8;
+}
+
+.fc-sun.ui-widget-content {
+    /* color weekends grey */
+    background: #E8E8E8;
+}
+
+.fc-holiday-highlight {
+    /* color holidays a soft red */
+    background: #ED4C54;
+}

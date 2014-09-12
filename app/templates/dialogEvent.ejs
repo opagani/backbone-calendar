@@ -1,0 +1,70 @@
+<h3><%= model.get('labelId') %></h3>
+<fieldset>
+<div class="field">
+    <label for="name">Name: </label>
+    <input type="text" name="name" class="name" value="<%= model.get('name') %>" />
+</div>
+<div class="field">
+    <label for="day_type">Day Type: </label>
+    <select name="day_type" class="dayType">
+        <% _.each(model.get('dayTypeList'), function(dayTypeItem) { %>
+            <option value=<%= dayTypeItem.toLowerCase() %>><%= dayTypeItem %></option> 
+        <% }); %>
+    </select>
+</div>
+<div class="field">
+    <label for="day_start">Start Day: </label>
+    <select name="day_start" class="startDay">
+        <% _.each(model.get('startDayList'), function(startDayItem) { %>
+            <option value=<%= startDayItem %>><%= startDayItem %></option>
+        <% }); %>
+    </select>
+</div>
+<div class="field">
+    <label for="day_stop">Stop Day (inclusive): </label>
+    <select name="day_stop" class="stopDay">
+        <% _.each(model.get('stopDayList'), function(stopDayItem) { %>
+            <option value=<%= stopDayItem %>><%= stopDayItem %></option>
+        <% }); %>
+    </select>
+</div>
+ <div class="field">
+    <label for="datepicker">Date: </label>
+    <input type="text" id="datepicker" class="date" />
+</div>
+<div class="ui-widget field">
+    <label for="combobox">Time: </label>
+    <select id="combobox">
+        <% _.each(model.get('timeList'), function(timeItem) { %>
+            <option value=<%= timeItem %>><%= timeItem %></option>
+        <% }); %>
+    </select>
+</div>
+<div class="field">
+    <label for="username">Username: </label>
+    <input type="text" name="username" value="<%= model.get('username') %>" />
+</div>
+<div class="field">
+    <label for="fail_mail">Email on Fail: </label>
+    <input type="text" name="fail_mail" value="<%= model.get('fail_mail') %>" />
+</div>
+<div class="field">
+    <label for="event_tags">Event Tag(s): </label>
+    <input type="text" name="event_tags" value="<%= model.get('event_tags') %>" />
+</div>
+         
+<% if (model.get('_type') == "History") { %>
+    <div class="field">
+        <label for="log_name">Logfile: </label>
+        <a href="/scheduler/logs/<%= model.get('log_name') %>" target="_blank"><%= model.get('log_name') %></a>
+    </div>
+<% } %>
+     
+<div class="field">
+    <label for="plugin_name">Plugin: </label>
+    <select name="plugin_name" class="plugin" disabled>
+        <option value="plugin_generic">generic</option>
+        <option value="plugin_pygrue">pygrue</option>
+    </select>
+</div>
+</fieldset>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset=utf-8>
+        <title>Scheduler</title>
+        <link rel="stylesheet" href="/webui/css/cupertino/jquery-ui-1.10.3.custom.min.css" />
+        <link rel="stylesheet" href="/webui/css/scheduler.css" />       
+    </head>
+    <body>
+        <div id="main">
+            <div id="header"></div>
+            <div id="calendar"></div>
+        </div>
+        <script data-main="/webui/app/config" src="/webui/bower_components/requirejs/require.js" ></script>
+        <script>
+            if (window.location.port === "8885") {
+                var script = document.createElement("script");
+                script.src = "http://localhost:35729/livereload.js";
+                document.body.appendChild(script);
+            }
+        </script>
+    </body>
+</html>
