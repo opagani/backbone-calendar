@@ -2,13 +2,14 @@ config =
   cssmin:
     compress:
       files:
-        'css/scheduler.css': [
-          'css/login.css',
-          'css/fullcalendar.css'
-          'css/calendar.css'
-          'css/dialog.css'
-          'css/combobox.css'
-          'css/app.css'
+        'public/css/scheduler.css': [
+          'public/css/login.css',
+          'public/css/font-awesome.css'
+          'public/css/fullcalendar.css'
+          'public/css/calendar.css'
+          'public/css/dialog.css'
+          'public/css/combobox.css'
+          'public/css/app.css'
         ]
       options:
         keepSpecialComments: 0
@@ -18,7 +19,7 @@ config =
       options:
         mainConfigFile: 'app/config.js'
         name: 'config'
-        out: 'app/scheduler.js'
+        out: 'public/build/scheduler.js'
         optimize: 'uglify2'
         wrap: false
         preserveLicenseComments: false

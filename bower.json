@@ -1,10 +1,15 @@
 {
   "name": "scheduler",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "author": "Oscar Pagani <paganio@yahoo.com>",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components"
+    "bower_components",
+    "test*",
+    "Gruntfile.js",
+    "package.json"
   ],
   "dependencies": {
     "requirejs": "~2.1.5",
@@ -16,6 +21,6 @@
     "markdown": "~0.5.0",
     "mocha": "~1.17.0",
     "chai": "~1.8.1",
-    "bootstrap": "~3.1.1"
+    "bootstrap": "~3.2.0"
   }
 }

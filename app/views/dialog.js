@@ -66,6 +66,7 @@ define(function(require, exports, module) {
             if (!this._type) {  // New Event
                 buttons = { 
                     Cancel: function() {
+                        that.removeViews();
                         var refModel = that.model;
                         that.model.trigger('destroy', refModel);
                     },
@@ -169,21 +170,26 @@ define(function(require, exports, module) {
             var values = this.getDialogFieldValues(),
                 pluginInfo = { plugin_info: this.getPluginInfo() };
 
-            this.model.save(_.extend(values, pluginInfo), { url: '/data/create_event' });
+            var extraArgs = {
+                '_type': 'DailyEvent'
+            };
+
+            if (values.day_type !== 'single') {
+                extraArgs.date = this.dialogEventModel.get('date');
+            }
+
+            this.model.save(_.extend(values, pluginInfo, extraArgs), { url: '/event/create' });
             this.removeViews();
-            //window.location.reload();
         },
 
         delete: function() {
             this.removeViews();
             this.model.destroy({
+                url: '/event/delete/' + this.model.get('event_id'),
                 data: {
-                    'event_id': this.model.get('event_id'),
-                    'day_type': this.model.get('day_type')
-                },
-                url: '/data/delete_event'
+                    'id': this.model.get('event_id')
+                }
             });
-            //window.location.reload();
         },
 
         replace: function() {
@@ -196,7 +202,6 @@ define(function(require, exports, module) {
 
             this.model.save(_.extend(values, pluginInfo, extraArgs), { url: '/data/replace_daily_with_single' });
             this.removeViews();
-            //window.location.reload();
         },
 
         save: function() {
@@ -211,7 +216,7 @@ define(function(require, exports, module) {
                 url: '/data/set_event_attributes',
                 success: function() {
                     that.updatePluginInfo(pluginInfo);
-                    this.removeViews();
+                    that.removeViews();
                     //window.location.reload();
                 }
             });
@@ -222,7 +227,7 @@ define(function(require, exports, module) {
                 _.each(this.childViews, function(childView) {
                     console.log(childView);
                     childView.remove();
-                })                
+                });              
             }
             this.remove();
         }

@@ -1,0 +1,1 @@
+mongoimport --db backbone-calendar --collection events --file ./db/seed_events.json --jsonArray

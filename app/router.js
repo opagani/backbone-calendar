@@ -23,7 +23,6 @@ define(function(require, exports, module) {
         },
 
         logout: function() {
-            alert("inss");
             var that = this;
 
             Backbone.history.navigate('login', true);
@@ -50,7 +49,7 @@ define(function(require, exports, module) {
                     _.each(this.currentView.childViews, function(childView) {
                         console.log(childView);
                         childView.remove();
-                    })                
+                    });               
                 }
                 this.currentView.remove();
             }

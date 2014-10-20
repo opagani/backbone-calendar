@@ -1,23 +1,19 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="../bower_components/mocha/mocha.css" />
-        <link rel="stylesheet" href="../css/fullcalendar.css" />
-        <link rel="stylesheet" href="../css/cupertino/jquery-ui-1.10.3.custom.min.css" />
-        <link rel="stylesheet" href="../css/calendar.css" />
-        <link rel="stylesheet" href="../css/dialog.css" />
-        <link rel="stylesheet" href="../css/combobox.css" />
-        <link rel="stylesheet" href="../css/app.css" />
-    </head>
-    <body>
-        <div id="mocha"></div>
-        <script src="../bower_components/mocha/mocha.js"></script>
-        <script src="../bower_components/chai/chai.js"></script>
-        <script src="../node_modules/sinon/pkg/sinon-1.7.3.js"></script>
-        <script>
-            mocha.ui('bdd');
-            mocha.reporter('html');
-        </script>
-        <script data-main="app/config" src="../bower_components/requirejs/require.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../bower_components/mocha/mocha.css" />
+    <link rel="stylesheet" href="../public/cpublic/ss/cupertino/jquery-ui-1.10.3.custom.min.css" />
+    <link rel="stylesheet" href="../public/build/scheduler.css" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+      <script src="../bower_components/mocha/mocha.js"></script>
+      <script src="../bower_components/chai/chai.js"></script>
+      <script src="../node_modules/sinon/pkg/sinon-1.7.3.js"></script>
+      <script>
+        mocha.ui('bdd');
+        mocha.reporter('html');
+      </script>
+      <script data-main="app/config" src="../bower_components/requirejs/require.js"></script>
   </body>
 </html>

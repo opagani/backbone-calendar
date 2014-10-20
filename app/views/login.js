@@ -25,9 +25,9 @@ define(function(require, exports, module) {
         onPasswordKeyup: function(evt){
             var k = evt.keyCode || evt.which;
 
-            if (k == 13 && $('#login-password-input').val() === '') {
+            if (k === 13 && $('#login-password-input').val() === '') {
                 evt.preventDefault();    // prevent enter-press submit when input is empty
-            } else if (k == 13) {
+            } else if (k === 13) {
                 evt.preventDefault();
                 this.doLogin();            
             }

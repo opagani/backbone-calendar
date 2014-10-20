@@ -7,13 +7,14 @@ module.exports = function(grunt) {
         cssmin: {
             compress: {
                 files: {
-                    'css/scheduler.css': [
-                        'css/login.css',
-                        'css/fullcalendar.css',
-                        'css/calendar.css',
-                        'css/dialog.css',
-                        'css/combobox.css',
-                        'css/app.css'
+                    'public/build/scheduler.css': [
+                        'public/css/login.css',
+                        'public/css/font-awesome.css',
+                        'public/css/fullcalendar.css',
+                        'public/css/calendar.css',
+                        'public/css/dialog.css',
+                        'public/css/combobox.css',
+                        'public/css/app.css'
                     ]
                 },
                 options: {
@@ -27,7 +28,7 @@ module.exports = function(grunt) {
                 options: {
                     mainConfigFile: 'app/config.js',
                     name: 'config',
-                    out: 'app/scheduler.js',
+                    out: 'public/build/scheduler.js',
                     optimize: 'uglify2',
                     wrap: false,
                     preserveLicenseComments: false,
@@ -72,27 +73,50 @@ module.exports = function(grunt) {
             jshint:{
                 files: '<%= jshint.files %>',
                 tasks: ['newer:jshint:files']
-            }
-        },
-
-        nodemon: {
-            main: {},
-            debug: {
-                options: {
-                    nodeArgs: ['--debug']
-                }
-            }
-        },
-
-        concurrent: {
-            main: {
-                tasks: ['nodemon', 'watch'],
-                options: {
-                    logConcurrentOutput: true
-                }
             },
-            debug: {
-                tasks: ['nodemon:debug', 'watch'],
+            server: {
+                files: ['.rebooted']
+            } 
+        },
+
+        // Watches back-end files for changes, restarts the server
+        nodemon: {
+            dev: {
+                script: 'app.js',
+                options: {
+                    env: {
+                        PORT: 3000
+                    },
+                    ext: 'js,ejs,html',
+                    callback: function (nodemon) {
+                        nodemon.on('log', function (event) {
+                            console.log(event.colour);
+                        });
+
+                        // opens browser on initial server start
+                        nodemon.on('config:update', function () {
+                            // Delay before server listens on port
+                            setTimeout(function() {
+                                require('open')('http://localhost:3000');
+                            }, 1000);
+                        });
+
+                        // refreshes browser when server reboots
+                        nodemon.on('restart', function () {
+                            // Delay before server listens on port
+                            setTimeout(function() {
+                                require('fs').writeFileSync('.rebooted', 'rebooted');
+                            }, 1000);
+                        });
+                    }
+                }
+            }
+        },
+
+        // Allows us to run watch and nodemon concurrently with logging
+        concurrent: {
+            dev: {
+                tasks: ['nodemon:dev', 'watch'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -101,9 +125,11 @@ module.exports = function(grunt) {
 
         mocha: {
             test: {
-                src: ['test/*.html'],
+                src: ['test/**/*.html'],
                 options: {
-                  reporter: 'Nyan'
+                    reporter: 'Nyan',
+                    logErrors: true,
+                    ui: 'bdd'
                 }
             }
         }
@@ -123,4 +149,7 @@ module.exports = function(grunt) {
     grunt.registerTask('devel', ['compile', 'concurrent']);
     grunt.registerTask('devel:debug', ['compile', 'concurrent:debug']);
     grunt.registerTask('test', ['compile', 'mocha']);
+
+    // Starts a server and runs nodemon and watch using concurrent
+    grunt.registerTask('server', ['concurrent:dev']);
 };

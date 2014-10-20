@@ -8,7 +8,7 @@ define(function(require, exports, module) {
         DialogCollection = require('collections/dialog'),
         DialogModel = require('models/dialog'),
         DialogView = require('views/dialog'),
-        DaemonView = require('views/daemon'),
+        //DaemonView = require('views/daemon'),
         LogoutView = require('views/logout'); 
 
     module.exports = Backbone.View.extend({
@@ -68,14 +68,14 @@ define(function(require, exports, module) {
             var that = this;
 
             $.ajax({
-                url: '/data/get_events_and_history_by_range',
+                url: '/events',
                 data: {
                     start_datetime: start.toLocaleString(),
                     stop_datetime: end.toLocaleString()
                 }
             }).done(function(data) {
                 var events = [];
-                $(data.rows).each(function(index, eventData) {
+                $(data).each(function(index, eventData) {
                     events.push(that.translateData(eventData));
                 });
                 callback(events);
@@ -83,7 +83,7 @@ define(function(require, exports, module) {
         },
 
         renderCalendar: function(view) {
-            this.childViews.push(new DaemonView, new LogoutView);
+            //this.childViews.push(new DaemonView(), new LogoutView());
 
             // fetches the day info for the current range
             $.ajax({

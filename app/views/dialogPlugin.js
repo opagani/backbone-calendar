@@ -26,9 +26,9 @@ define(function(require, exports, module) {
                 }, 100);
             } else {
                 if (options.type !== 'History') {
-                    url = '/data/get_plugin';
+                    url = '/plugin_event';
                 } else {
-                    url = '/data/get_plugin_history';
+                    url = '/plugin_history';
                 }
             
                 this.model.fetch({

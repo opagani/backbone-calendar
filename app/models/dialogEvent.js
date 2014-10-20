@@ -18,8 +18,8 @@ define(function(require, exports, module) {
             'plugin_info': ''
         },
         parse: function(response) {
-            if (response.rows[0]) {
-                return response.rows[0];
+            if (response[0]) {
+                return response[0];
             }
             return response;
         }

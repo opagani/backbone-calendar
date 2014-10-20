@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Scheduler</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/cupertino/jquery-ui-1.10.3.custom.min.css" />
+    <link rel="stylesheet" href="/build/scheduler.css" />       
+  </head>
+  <body>
+    <div id="main">
+      <div id="header"></div>
+      <div id="calendar"></div>
+    </div>
+    <div id="login"></div>
+    <script data-main="/app/config" src="/bower_components/requirejs/require.js" ></script>
+    <script>
+      if (window.location.port === "3000") {
+        var script = document.createElement("script");
+        script.src = "http://localhost:35729/livereload.js";
+        document.body.appendChild(script);
+      }
+    </script>
+  </body>
+</html>
