@@ -112,54 +112,54 @@ define(function(require, exports, module) {
                 requests = [];
             });
 
-            it('makes a PUT request for `/data/set_attributes` on save', function () {
-                this.dialogView.model.save({}, { url: '/data/set_event_attributes' }, sinon.spy());
+            it('makes a PUT request for `/event/update` on save', function () {
+                this.dialogView.model.save({}, { url: '/event/update' }, sinon.spy());
                 
-                assert.equal(requests.length, 3);
-                assert.equal(requests[2].method, 'PUT');
-                assert.equal(requests[2].url, '/data/set_event_attributes');
+                assert.equal(requests.length, 2);
+                assert.equal(requests[1].method, 'PUT');
+                assert.equal(requests[1].url, '/event/update');
             });
 
-            it('makes a POST request for `/data/update_plugin_info` on save', function () {
+            /*it('makes a POST request for `/data/update_plugin_info` on save', function () {
                 this.dialogView = new DialogView({ model: new DialogModel(), startDate: new Date() });
                 this.dialogView.updatePluginInfo({ 'resource': 'a', 'user': 'b', 'command': 'c' }, sinon.spy());
                 
                 assert.equal(requests.length, 3);
                 assert.equal(requests[2].method, 'POST');
                 assert.equal(requests[2].url, '/data/update_plugin_info');
-            });
+            });*/
         
-            it('makes a DELETE request for `/data/delete_event` on delete', function () {
+            it('makes a DELETE request for `/event/delete` on delete', function () {
                this.dialogView.model.destroy({
                     data: {
                         'event_id': this.dialogView.model.get('event_id'),
                         'day_type': this.dialogView.model.get('day_type')
                     },
-                    url: '/data/delete_event'
+                    url: '/event/delete'
                 },
                     sinon.spy()
                 );
                 
-                assert.equal(requests.length, 3);
-                assert.equal(requests[2].method, 'DELETE');
-                assert.equal(requests[2].url, '/data/delete_event');
+                assert.equal(requests.length, 2);
+                assert.equal(requests[1].method, 'DELETE');
+                assert.equal(requests[1].url, '/event/delete');
             });
 
-            it('makes a PUT request for `/data/replace_daily_with_single` on replace', function () {
+            /*it('makes a PUT request for `/data/replace_daily_with_single` on replace', function () {
                 this.dialogView.model.save({}, { url: '/data/replace_daily_with_single' }, sinon.spy());
                 
                 assert.equal(requests.length, 3);
                 assert.equal(requests[2].method, 'PUT');
                 assert.equal(requests[2].url, '/data/replace_daily_with_single');
-            });
+            });*/
 
-            it('makes a POST request for `/data/create_event` on create', function () {
+            it('makes a POST request for `/event/create` on create', function () {
                 this.dialogView = new DialogView({ model: new DialogModel(), startDate: new Date() });
-                this.dialogView.model.save({}, { url: '/data/create_event' }, sinon.spy());
+                this.dialogView.model.save({}, { url: '/event/create' }, sinon.spy());
                 
-                assert.equal(requests.length, 3);
-                assert.equal(requests[2].method, 'POST');
-                assert.equal(requests[2].url, '/data/create_event');
+                assert.equal(requests.length, 2);
+                assert.equal(requests[1].method, 'POST');
+                assert.equal(requests[1].url, '/event/create');
             });
         });
     });

@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         cssmin: {
             compress: {
                 files: {
-                    'public/build/scheduler.css': [
+                    'public/build/backbone-calendar.css': [
                         'public/css/login.css',
                         'public/css/font-awesome.css',
                         'public/css/fullcalendar.css',
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
                 options: {
                     mainConfigFile: 'app/config.js',
                     name: 'config',
-                    out: 'public/build/scheduler.js',
+                    out: 'public/build/backbone-calendar.js',
                     optimize: 'uglify2',
                     wrap: false,
                     preserveLicenseComments: false,
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
         },
 
         jshint: {
-            files: ['Gruntfile.js', 'app/**/*.js', 'test/app/**/*.js', '!app/scheduler.js'],
+            files: ['Gruntfile.js', 'app/**/*.js', 'test/app/**/*.js', '!public/build/backbone-calendar.js'],
             options: {
                 curly: true,
                 eqeqeq: true,
@@ -125,7 +125,7 @@ module.exports = function(grunt) {
 
         mocha: {
             test: {
-                src: ['test/**/*.html'],
+                src: ['test/*.html'],
                 options: {
                     reporter: 'Nyan',
                     logErrors: true,

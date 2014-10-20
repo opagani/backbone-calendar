@@ -13,7 +13,7 @@ dbConn.getDBConnection(function(currentDB) {
     var app = express();
 
     // view engine setup
-    app.set('views', path.join(__dirname, 'app'));
+    app.set('views', path.join(__dirname, 'public'));
     app.set('view engine', 'ejs');
 
     app.set('port', process.env.PORT || 3000);

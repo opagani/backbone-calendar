@@ -87,9 +87,9 @@ define(function(require, exports, module) {
                     Delete: function() {
                         that.delete();
                     },
-                    Replace: function() {
-                        that.replace();
-                    },
+                    //Replace: function() {
+                    //    that.replace();
+                    //},
                     Cancel: function() {
                         that.removeViews();
                         var refModel = that.model;
@@ -180,6 +180,7 @@ define(function(require, exports, module) {
 
             this.model.save(_.extend(values, pluginInfo, extraArgs), { url: '/event/create' });
             this.removeViews();
+            window.location.reload();
         },
 
         delete: function() {
@@ -190,6 +191,7 @@ define(function(require, exports, module) {
                     'id': this.model.get('event_id')
                 }
             });
+            window.location.reload();
         },
 
         replace: function() {
@@ -202,22 +204,25 @@ define(function(require, exports, module) {
 
             this.model.save(_.extend(values, pluginInfo, extraArgs), { url: '/data/replace_daily_with_single' });
             this.removeViews();
+            window.location.reload();
         },
 
         save: function() {
             var that = this,
-                args = {
-                    'config': this.getDialogFieldValues()
-                },
+                args = this.getDialogFieldValues();
                 pluginInfo = this.getPluginInfo();
+
+            if (args.day_type !== 'single') {
+                args.date = this.dialogEventModel.get('date');
+            }
 
             this.model.set('day_type', this.dialogEventModel.get('day_type'));
             this.model.save(args, { 
-                url: '/data/set_event_attributes',
+                url: '/event/update',
                 success: function() {
-                    that.updatePluginInfo(pluginInfo);
+                    //that.updatePluginInfo(pluginInfo);
                     that.removeViews();
-                    //window.location.reload();
+                    window.location.reload();
                 }
             });
         },

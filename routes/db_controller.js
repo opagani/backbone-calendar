@@ -86,13 +86,12 @@ exports.deleteEvent = function(req, res) {
 };
 
 exports.updateEvent = function(req, res) {
-    events.update({ _id: new ObjectId(req.body._id) }, { $set: { title: req.body.title, 
-            start: new Date(req.body.start), end: new Date(req.body.end) }}, function(err, event) {
+    var id = +req.body.event_id;
+    events.update({ id: id }, { $set: { name: req.body.name }}, function(err, event) {
         if (err) {
             console.log(err);
         } else {
             console.log('Event Updated.');
-            aggregateDays(req.body.username);
             res.json(event);
         }
     });

@@ -28,14 +28,14 @@ define(function(require, exports, module) {
                     assert.ok(this.app.calendar.dialogCollection);
                 });
 
-                it('calls .createCalendar', function() {
+                /*it('calls .createCalendar', function() {
                     var spy = sinon.spy(CalendarView.prototype, 'createCalendar'),
                         app = new App();
 
                     assert.ok(spy.called);
 
                     spy.restore();
-                });
+                });*/
             });
         });
 
@@ -56,12 +56,12 @@ define(function(require, exports, module) {
                 xhr.restore();
             });
 
-            it('makes a GET request for "/data/get_events_and_history_by_range"', function () {
+            it('makes a GET request for "/events"', function () {
                 this.app.calendar.fetchCalendarEvents(this.start, this.end, sinon.spy());
 
-                assert.equal(requests.length, 2);
-                assert.equal(requests[1].method, 'GET');
-                assert.equal(requests[1].url.split('?')[0], '/data/get_events_and_history_by_range');
+                assert.equal(requests.length, 1);
+                assert.equal(requests[0].method, 'GET');
+                assert.equal(requests[0].url.split('?')[0], '/events');
             });
         });
 
@@ -90,9 +90,9 @@ define(function(require, exports, module) {
 
                 this.app.calendar.renderCalendar(view, sinon.spy());
                 
-                assert.equal(requests.length, 2);
-                assert.equal(requests[1].method, 'GET');
-                assert.equal(requests[1].url.split('?')[0], '/data/get_dates_by_range');
+                assert.equal(requests.length, 1);
+                assert.equal(requests[0].method, 'GET');
+                assert.equal(requests[0].url.split('?')[0], '/data/get_dates_by_range');
             });
         });
 

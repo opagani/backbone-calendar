@@ -18,9 +18,9 @@ define(function(require, exports, module) {
                     assert.ok(this.app.calendar);
                 });
 
-                it('creates a daemon view', function() {
-                    assert.ok(this.app.daemon);
-                });
+                //it('creates a daemon view', function() {
+                  //  assert.ok(this.app.daemon);
+                //});
             });
         });
     });

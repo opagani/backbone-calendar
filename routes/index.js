@@ -12,5 +12,5 @@ module.exports = function(app) {
     app.get('/plugin_event', db_controller.getPluginEvent);
     app.post('/event/create', db_controller.createEvent);
     app.delete('/event/delete/:id', db_controller.deleteEvent);
-    app.post('/event/update', db_controller.updateEvent);
+    app.put('/event/update', db_controller.updateEvent);
 };
