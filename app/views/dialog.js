@@ -103,8 +103,8 @@ define(function(require, exports, module) {
 
             var dialogWidget = this.$el.dialog({
                 resizable: false,
-                height: 825,
-                width: 700,
+                height: 750,
+                width: 650,
                 close: function() { 
                     $(this).dialog('destroy');
                 },
