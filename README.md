@@ -5,6 +5,8 @@ This is a sample app based on Arshaw FullCalendar that uses:  Backbone.js, Requi
 
 This application allows the user to create, update and delete events. The data is persistent and it is kept in the MongoDB database.
 
+Every time you click on a day event a dialog appears where you can create a new event.  If you click on an existing event, you will have the option to change the information and save the event in the database.
+
 After cloning/downloading the app, you need to follow all the installation steps including the MongoDB installation.  Then, you need to run the Mongo Server, import data into the Mongo Database and start the  app server.
 
 Requirements
