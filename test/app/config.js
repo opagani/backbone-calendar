@@ -11,9 +11,9 @@ require.config({
         jqueryui: '../bower_components/jquery-ui/ui/jquery-ui',
         markdown: '../bower_components/markdown/lib/markdown',
         tpl: '../bower_components/requirejs-tpl/tpl',
-        fullcalendar: '../public/lib/fullcalendar/fullcalendar',
-        date: '../public/lib/date',
-        combobox: '../public/lib/combobox',
+        fullcalendar: '../lib/fullcalendar/fullcalendar',
+        date: '../lib/date',
+        combobox: '../lib/combobox',
         bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
 
         test: '../test/app'

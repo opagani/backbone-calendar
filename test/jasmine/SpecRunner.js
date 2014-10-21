@@ -19,7 +19,7 @@ define(function(require, exports, module) {
  
     //specs.push('spec/models/TodoSpec');
     specs.push('spec/views/calendar');
-    specs.push('spec/views/dialog');
+    //specs.push('spec/views/dialog');
  
     $(function(){
         require(specs, function(){

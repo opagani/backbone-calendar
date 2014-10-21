@@ -132,6 +132,23 @@ module.exports = function(grunt) {
                     ui: 'bdd'
                 }
             }
+        },
+
+        jasmine: {
+            test: {
+                src : 'app/**/*.js',
+                options : {
+                    specs : 'test/jasmine/spec/**/*.js',
+                    template: require('grunt-template-jasmine-requirejs'),
+                    templateOptions: {
+                        requireConfig: {
+                            requireConfig: {
+                                File: ['app/config.js', 'test/jasmine/config.js']
+                            }
+                        }
+                    }
+                }
+            }
         }
     });
 
@@ -143,6 +160,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-newer');
     grunt.loadNpmTasks('grunt-mocha');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
 
     grunt.registerTask('compile', ['newer:cssmin', 'newer:requirejs', 'newer:jshint']);
     grunt.registerTask('default', ['compile']);
